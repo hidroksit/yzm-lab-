@@ -1,37 +1,25 @@
-Bu projede, car_evaluation.csv veri seti kullanılarak iki farklı Naive Bayes sınıflandırma modelinin performansları karşılaştırılmıştır. Veri seti, 1727 örnek ve 7 özelliğe sahiptir.
+Bu projede, araç değerlendirme veri seti kullanılarak, araçların sınıflandırılması (örneğin "unacc" gibi sınıflar) hedeflenmiştir. Amaç, farklı Naive Bayes yaklaşımlarını (scikit-learn ve custom model) karşılaştırarak en iyi performansı sağlayanı belirlemektir.
 
-Veri setinde herhangi bir eksik veri bulunmamaktadır
+Eksik Veri: Hiçbir eksik veri bulunmamaktadır.
 
-Model Performansları ve Sonuçlar
-Projede iki model uygulanmıştır:
-
+Yöntem
+Modeller:
+scikit-learn MultinomialNB modeli
+Custom Naive Bayes modeli
+Değerlendirme Metrikleri:
+Doğruluk (Accuracy)
+Karmaşıklık Matrisi (Confusion Matrix)
+Precision, Recall, F1-Score (ek metrikler, problem ve sınıf dağılımı göz önünde bulundurularak)
+Not: Jupyter Notebook kullanılarak çalışma gerçekleştirilmiştir. Dolayısıyla, kod dosyaları .py uzantılı olmayıp, Notebook formatında sunulmuştur.
+Sonuçlar
 scikit-learn MultinomialNB:
-
-Doğruluk (Accuracy): 0.6994
-Eğitim Süresi: 0.010301 sn
-Tahmin Süresi: 0.009728 sn
+Doğruluk: %69.94
+Eğitim ve tahmin süreleri de ölçülmüştür.
 Custom Naive Bayes:
-
-Doğruluk (Accuracy): 0.8343
-Eğitim Süresi: 0.007322 sn
-Tahmin Süresi: 0.051956 sn
-Performans Ölçümünde Kullanılan Metodoloji
-Karmaşıklık Matrisi (Confusion Matrix) Görselleştirmesi
-Model performansını değerlendirirken, sadece doğruluk oranına bakmak yeterli olmayabilir. Bu nedenle, her iki model için de karmaşıklık matrisi oluşturularak:
-
-True Positive (TP), False Positive (FP), True Negative (TN) ve False Negative (FN) değerleri belirlenmiştir.
-Karmaşıklık matrisi, sınıflandırma hatalarının hangi sınıflarda yoğunlaştığını görselleştirmek ve modelin hangi durumlarda hatalı kararlar verdiğini anlamak için kullanılmaktadır.
-Bu görselleştirme, özellikle dengesiz sınıf dağılımlarında modelin performansını daha detaylı analiz etmeye olanak sağlar.
-Değerlendirme Metrikleri ve Seçiminde Problem & Sınıf Dağılımının Rolü
-Proje kapsamında kullanılan temel değerlendirme metrikleri şunlardır:
-
-Doğruluk (Accuracy): Genel olarak doğru sınıflandırma oranını ölçer.
-Precision (Kesinlik): Pozitif olarak tahmin edilen örnekler içerisindeki gerçek pozitif oranını gösterir.
-Recall (Duyarlılık): Gerçek pozitiflerin ne kadarının doğru tespit edildiğini ifade eder.
-F1-Score: Precision ve Recall arasındaki dengeyi ölçen harmonik ortalamadır.
-Metrik Seçiminin Önemi:
-
-Problem Tanımı: Sınıflandırma probleminin doğası (örneğin, tıbbi teşhis, dolandırıcılık tespiti gibi) hangi metriklerin daha kritik olduğunu belirler. Örneğin, sağlık uygulamalarında yanlış negatiflerin (hasta olmasına rağmen sağlıklı tahmini) maliyeti çok yüksek olabilir.
-Sınıf Dağılımı: Veri setinde sınıflar arasında dengesizlik varsa, sadece doğruluk oranı yanıltıcı olabilir. Dengesiz veri setlerinde, precision, recall ve F1-score gibi metriklerin kullanımı modelin performansını daha sağlıklı değerlendirmeye yardımcı olur.
-Bu nedenle, değerlendirme metriklerinin seçimi, problemi doğru tanımlamak ve sınıf dağılımını göz önünde bulundurmak açısından kritik öneme sahiptir. Hem modelin genel başarısını hem de belirli sınıflara yönelik performansını değerlendirebilmek için birden fazla metriğin kullanılması önerilmektedir.
-
+Doğruluk: %83.43
+Eğitim ve tahmin süreleri farklılık göstermiştir.
+Karmaşıklık matrisi ile modellerin hata dağılımları görselleştirilmiş, dengesiz sınıf dağılımlarının modele etkisi detaylandırılmıştır.
+Yorum / Tartışma
+Model Karşılaştırması: Custom Naive Bayes modeli, doğruluk açısından daha başarılı bulunmuştur.
+Metrik Seçimi: Sınıf dağılımının dengesiz olduğu durumlarda, yalnızca doğruluk metriği yeterli olmamaktadır. Precision, Recall ve F1-Score gibi ek metrikler, modelin belirli sınıflar üzerindeki performansını daha doğru analiz etmemizi sağlamıştır.
+Uygulama Önerisi: Jupyter Notebook kullanımı, veri ön işleme, model eğitimi ve sonuç görselleştirmeleri açısından etkileşimli bir çalışma ortamı sunmaktadır.
